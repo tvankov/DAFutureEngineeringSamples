@@ -9,3 +9,25 @@ df['new_embarked']=df['embarked'].fillna(df['embarked'].mode())
 ---------mode-----------------------------------------
 print(df[df['embarked'].notna()]['embarked'].mode()[0])
 mode_value=df[df['embarked'].notna()]['embarked'].mode()[0]
+
+83. Handling Imbalanced Dataset - UpScaling, DownScaling
+
+#Stable Seed
+np.random.seed(123) 
+
+## CREATE MY DATAFRAME WITH IMBALANCED DATASET
+df_class_0 = pd.DataFrame({
+    'feature_1': np.random.normal(loc=0, scale=1, size=class_0),
+    'feature_2': np.random.normal(loc=0, scale=1, size=class_0),
+    'target': [0] * class_0
+})
+
+df = pd.concat([df_class_0, df_class_1]).reset_index(drop=True)
+
+df['target'].value_counts()
+
+from sklearn.utils import resample
+df_minority_upsampled=resample(df_minority,replace=True, #Sample With replacement
+         n_samples=len(df_majority),
+         random_state=42
+        )
