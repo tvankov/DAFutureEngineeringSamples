@@ -57,4 +57,18 @@ from imblearn.over_sampling import SMOTE
 oversample=SMOTE()
 X,y=oversample.fit_resample(final_df[['f1','f2']],final_df['target'])
 
+## 5 number Summary And Box Plot
+
+import numpy as np
+lst_marks=[ 45,32,56,75,89,54,32,89,90,87,67,54,45,98,99,67,74]
+minimum,Q1,median,Q3,maximum=np.quantile(lst_marks,[0,0.25,0.50,0.75,1.0])
+
+IQR=Q3-Q1
+
+lower_fence=Q1-1.5*(IQR)
+higher_fence=Q3+1.5*(IQR)
+
+import seaborn as sns
+sns.boxplot(lst_marks)
+
 
