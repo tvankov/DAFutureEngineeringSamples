@@ -16,7 +16,7 @@ mode_value=df[df['embarked'].notna()]['embarked'].mode()[0]
 
 #Stable Seed
 np.random.seed(123) 
---------!
+
 
 #CREATE MY DATAFRAME WITH IMBALANCED DATASET
 df_class_0 = pd.DataFrame({
@@ -24,11 +24,11 @@ df_class_0 = pd.DataFrame({
     'feature_2': np.random.normal(loc=0, scale=1, size=class_0),
     'target': [0] * class_0
 })
---------!
+
 df = pd.concat([df_class_0, df_class_1]).reset_index(drop=True)
---------!
+
 df['target'].value_counts()
---------!
+
 from sklearn.utils import resample
 df_minority_upsampled=resample(df_minority,replace=True, #Sample With replacement
          n_samples=len(df_majority),
@@ -46,11 +46,11 @@ X,y = make_classification(n_samples=1000,
                           n_clusters_per_class=1,
                           weights=[0.90],
                           random_state=12)
---------!
+
 import matplotlib.pyplot as plt
 
 plt.scatter(final_df['f1'],final_df['f2'],c=final_df['target'])
---------!
+
 from imblearn.over_sampling import SMOTE
 
 #transform the dataset
