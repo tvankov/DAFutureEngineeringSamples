@@ -57,7 +57,7 @@ from imblearn.over_sampling import SMOTE
 oversample=SMOTE()
 X,y=oversample.fit_resample(final_df[['f1','f2']],final_df['target'])
 
-## 5 number Summary And Box Plot
+## 85 5-Number Summary And Box Plot
 
 import numpy as np
 lst_marks=[ 45,32,56,75,89,54,32,89,90,87,67,54,45,98,99,67,74]
@@ -70,5 +70,20 @@ higher_fence=Q3+1.5*(IQR)
 
 import seaborn as sns
 sns.boxplot(lst_marks)
+
+## Nominal/OHE Encoding
+
+from sklearn.preprocessing import OneHotEncoder
+
+create an instance of Onehotencoder
+encoder=OneHotEncoder()
+perform fit and transform
+encoded=encoder.fit_transform(df[['color']]).toarray()
+
+
+
+import seaborn as sns
+sns.load_dataset('tips')
+
 
 
