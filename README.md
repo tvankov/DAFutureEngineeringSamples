@@ -71,7 +71,7 @@ higher_fence=Q3+1.5*(IQR)
 import seaborn as sns
 sns.boxplot(lst_marks)
 
-## Nominal/OHE Encoding
+## 86 Nominal/OHE Encoding
 
 from sklearn.preprocessing import OneHotEncoder
 
@@ -84,6 +84,9 @@ encoded=encoder.fit_transform(df[['color']]).toarray()
 
 import seaborn as sns
 sns.load_dataset('tips')
+
+
+## 89 Red Wine Dataset + Jupitar Data
 
 
 
